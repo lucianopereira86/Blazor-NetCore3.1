@@ -1,0 +1,29 @@
+﻿<div class="col-6">
+    Address
+</div>
+<div class="col-6">
+    <pre style="white-space: pre-line">@Address.Lines</pre>
+</div>
+<div class="col-6">
+    Area
+</div>
+<div class="col-6">
+    @Address.Area
+</div>
+<div class="col-6">
+    Postal Code
+</div>
+<div class="col-6">
+    @Address.PostalCode
+</div>
+<div class="col-6">
+    Country
+</div>
+<div class="col-6">
+    @Address.Country
+</div>
+
+@code {
+    [Parameter]
+    public Address Address { get; set; }
+}

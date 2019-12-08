@@ -1,0 +1,31 @@
+﻿<div class="row">
+    <div class="col-12">
+        <h2>Application</h2>
+    </div>
+    <div class="col-6">
+        Application Date
+    </div>
+    <div class="col-6">
+        @Application.Date.ToString("yyyy-MM-dd")
+    </div>
+    <div class="col-12">
+        Text
+    </div>
+    <div class="col-12">
+        <pre style="white-space: pre-line">@Application.Text</pre>
+    </div>
+</div>
+<hr />
+@if (ViewAnonymizedData)
+{
+    <CandidateComponent Candidate="@Application.Candidate" />
+}
+
+@code {
+    [Parameter]
+    public Application Application { get; set; }
+
+    [CascadingParameter(Name = "ViewAnonymizedData")]
+
+    public bool ViewAnonymizedData { get; set; }
+}

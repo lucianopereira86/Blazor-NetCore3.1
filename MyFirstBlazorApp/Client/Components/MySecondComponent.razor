@@ -1,0 +1,37 @@
+﻿<div>
+    <input type="number" @bind-value="Val1" placeholder="Valor 1" />
+    <input type="number" @bind-value="Val2" placeholder="Valor 2" />
+    Result: @Result
+</div>
+
+<button class="btn btn-success" @onclick=Add>Add</button>
+<button class="btn btn-danger" @onclick=Sub>Subtract</button>
+<button class="btn btn-info" @onclick=Mul>Multiply</button>
+
+@code  {
+    int Val1 { get; set; }
+    [Parameter]
+    public int Val2 { get; set; }
+    int Result { get; set; }
+
+    [Parameter]
+    public EventCallback<int> Val2Changed { get; set; }
+
+    async Task Add()
+    {
+        Result = Val1 + Val2;
+        await Val2Changed.InvokeAsync(Val2);
+    }
+
+    async Task Sub()
+    {
+        Result = Val1 - Val2;
+        await Val2Changed.InvokeAsync(Val2);
+    }
+
+    async Task Mul()
+    {
+        Result = Val1 * Val2;
+        await Val2Changed.InvokeAsync(Val2);
+    }
+}

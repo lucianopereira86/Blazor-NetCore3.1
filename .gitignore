@@ -1,0 +1,8 @@
+.git
+MyFirstBlazorApp/.vs
+MyFirstBlazorApp/Client/bin
+MyFirstBlazorApp/Client/obj
+MyFirstBlazorApp/Server/bin
+MyFirstBlazorApp/Server/obj
+MyFirstBlazorApp/Shared/bin
+MyFirstBlazorApp/Shared/obj

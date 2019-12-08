@@ -1,0 +1,13 @@
+﻿<div class="row ml-1">
+    <div class="col-6">
+        <h2>Candidate</h2>
+    </div>
+    <div class="col-12">
+        @Candidate.Name
+    </div>
+    <AddressComponent Address="@Candidate.Address" />
+</div>
+@code {
+    [Parameter]
+    public Candidate Candidate { get; set; }
+}

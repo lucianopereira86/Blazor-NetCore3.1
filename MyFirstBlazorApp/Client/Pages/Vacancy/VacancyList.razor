@@ -1,0 +1,77 @@
+﻿@page "/vacancy/list"
+
+@*<h2>List of Vancancies</h2>*@
+
+@foreach (VacancyData v in VacancyDatas)
+{
+    <CascadingValue Name="ViewAnonymizedData" Value="@ViewAnonymizedData">
+        <div class="bg-light p-3" style="cursor:pointer" @onclick="CheckChange">
+            <input type="checkbox" @bind=ViewAnonymizedData> View anonymized data
+        </div>
+        <VacancyComponent VacancyData="v"/>
+    </CascadingValue>
+}
+
+
+@code {
+    public bool ViewAnonymizedData { get; set; }
+    List<VacancyData> VacancyDatas { get; set; }
+    void CheckChange ()
+    {
+        ViewAnonymizedData = !ViewAnonymizedData;
+    }
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        VacancyDatas = new List<VacancyData>
+    {
+            new VacancyData
+            {
+                Title = "Trainee programmer",
+                ClosingDate = DateTime.Now,
+                Address = new Address
+                {
+                    Lines = "Office 3A, Concorde House\nBirmingham International Airport",
+                    Area = "Birmingham",
+                    PostalCode = "B26 3QJ",
+                    Country = "United Kingdom"
+                },
+                Applications = new List<Application>
+                {
+                    new Application
+                    {
+                        Date = DateTime.Now,
+                        Text = "Please give me this job",
+                        Candidate = new Candidate
+                        {
+                            Name = "Bob Monkhouse",
+                            Address = new Address
+                            {
+                                Lines = "123 Long Street\nSome town",
+                                Area = "Birmingham",
+                                PostalCode = "B11 2PY",
+                                Country = "United Kingdom"
+                            }
+                        }
+                    },
+                    new Application
+                    {
+                        Date = DateTime.Now,
+                        Text = "Please give me this job",
+                        Candidate = new Candidate
+                        {
+                            Name = "Bob Monkhouse",
+                            Address = new Address
+                            {
+                                Lines = "123 Long Street\nSome town",
+                                Area = "Birmingham",
+                                PostalCode = "B11 2PY",
+                                Country = "United Kingdom"
+                            }
+                        }
+                    }
+                }
+            }
+        };
+    }
+}
